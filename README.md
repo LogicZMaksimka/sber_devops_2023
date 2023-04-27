@@ -7,7 +7,7 @@
 
 # Запуск
 
-- Запускаем minikube `minikube start --driver=docker --memory=4096`
+- Запускаем minikube `minikube start --memory=4096`
 - Запускаем  `./run.sh`, внитри которого происходят следующие действия:
     1. Скачиваем istio
     2. Применяем проксирование через istio для дефолтного namespace
