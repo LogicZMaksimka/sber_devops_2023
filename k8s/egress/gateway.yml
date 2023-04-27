@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: random-dog-egressgateway
+spec:
+  selector:
+    app: istio-egressgateway
+  servers:
+    - port:
+        number: 80
+        name: tls
+        protocol: TLS
+      hosts:
+        - dog.ceo
+      tls:
+        mode: PASSTHROUGH

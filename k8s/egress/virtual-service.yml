@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: random-dog-egress-virtual-service
+spec:
+  hosts:
+    - dog.ceo
+  gateways:
+    - random-dog-egressgateway
+    - mesh
+  tls:
+    - match:
+        - gateways:
+            - mesh
+          port: 80
+          sniHosts:
+            - dog.ceo
+      route:
+        - destination:
+            host: istio-egressgateway.istio-system.svc.cluster.local
+            port:
+              number: 80
+    - match:
+        - gateways:
+            - random-dog-egressgateway
+          port: 80
+          sniHosts:
+            - dog.ceo
+      route:
+        - destination:
+            host: dog.ceo
+            port:
+              number: 80

@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name:  random-dog-service-entry
+spec:
+  hosts:
+    - dog.ceo
+  ports:
+    - number: 80
+      name: tls
+      protocol: TLS
+  resolution: DNS
